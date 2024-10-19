@@ -1,10 +1,10 @@
-package br.edu.fatecitaquera;
+package com.fatec.loja_brinquedos;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SistemaAcademicoApplicationTests {
+class LojaBrinquedosApplicationTests {
 
 	@Test
 	void contextLoads() {
