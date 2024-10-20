@@ -21,16 +21,18 @@ public class ProductService {
         productRepository.save(product);
     }
 
-    public void deleteProduct(Long id) {
+    public void deleteProduct(int id) {
         productRepository.deleteById(id);
     }
 
-    public Optional<Product> getProductById(Long id) {
+    public Optional<Product> getProductById(int id) {
         return productRepository.findById(id);
     }
 
-    public List<Product> getProductsByCategoryId(Long categoryId) {
-        return productRepository.findByCategoryId(categoryId);
+    public List<Product> getAllProductsByCategoryId(int categoryId) {
+        return productRepository.findAllByCategoryId(categoryId);
     }
+
+
 
 }
