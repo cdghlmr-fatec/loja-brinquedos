@@ -1,4 +1,10 @@
-Aqui estão os **Requisitos de uma Loja de Brinquedos** em formato Markdown para você e seus colegas consultarem:
+Para rodar locamente:
+- crie o banco de dados 'loja_brinquedos'
+- execute a aplicação
+
+No MYSQL-CLI execute: 
+- INSERT INTO roles (id, name) VALUES (1, 'ROLE_ADMIN'), (2, 'ROLE_USER');
+- insert into user_role(user_id, role_id) values (1,1), (1,2);
 
 ---
 
