@@ -7,94 +7,64 @@ No MYSQL-CLI execute:
 - insert into user_role(user_id, role_id) values (1,1), (1,2);
 
 ---
+Requisitos funcionais:
 
-# Loja de Brinquedos - Requisitos Funcionais
+1. Autenticação e autorização do usuário:
+- Os usuários podem registrar uma conta
+- Os usuários podem fazer login usando e-mail e senha
+- Os usuários podem fazer login usando o Google OAuth2
+- O sistema suporta diferentes funções de usuário (ROLE_ADMIN, ROLE_USER)
 
-## 1. Cadastro e Login de Usuários
-- O sistema deve permitir o **cadastro de novos usuários** (nome, e-mail, senha, endereço).
-- O sistema deve permitir o **login de usuários registrados**.
-- O sistema deve permitir a **recuperação de senha** via e-mail.
+2. Gerenciamento de produtos:
+- Os administradores podem adicionar, atualizar e excluir produtos
+- Os produtos têm atributos como nome, preço, peso, descrição e imagem
+- Os produtos são categorizados
 
-## 2. Gestão de Produtos
-- O administrador deve poder **adicionar novos produtos** ao catálogo (nome, descrição, preço, quantidade, categoria).
-- O administrador deve poder **editar as informações** de produtos já cadastrados.
-- O administrador deve poder **excluir produtos** do catálogo.
-- O sistema deve **listar todos os produtos** disponíveis para compra, com filtros de pesquisa.
-- O sistema deve exibir uma página de **detalhes de cada produto**.
+3. Gerenciamento de categorias:
+- Os administradores podem adicionar, atualizar e excluir categorias de produtos
 
-## 3. Carrinho de Compras
-- O sistema deve permitir que o usuário **adicione produtos ao carrinho**.
-- O sistema deve permitir que o usuário **remova produtos do carrinho**.
-- O sistema deve permitir que o usuário **atualize as quantidades** de produtos no carrinho.
-- O sistema deve exibir um **resumo do carrinho** com subtotal, impostos e frete.
+4. Carrinho de compras:
+- Os usuários podem adicionar produtos ao carrinho
+- Os usuários podem visualizar o carrinho
+- Os usuários podem remover itens do carrinho
 
-## 4. Checkout e Pagamento
-- O sistema deve permitir que o usuário **finalize a compra**.
-- O sistema deve oferecer **diferentes métodos de pagamento** (ex: cartão de crédito, boleto).
-- O sistema deve exibir um **resumo do pedido** antes da finalização.
-- O sistema deve enviar um **e-mail de confirmação do pedido** para o cliente após a compra.
+5. Processo de checkout:
+- Os usuários podem prosseguir para o checkout
+- Os usuários podem fazer pedidos
 
-## 5. Gestão de Pedidos
-- O sistema deve permitir que o cliente veja seu **histórico de pedidos**.
-- O sistema deve mostrar o **status do pedido** (ex: processando, enviado, entregue).
-- O sistema deve permitir que o cliente e o administrador **cancelem pedidos** antes da entrega.
+6. Navegação de produtos:
+- Os usuários podem visualizar todos os produtos
+- Os usuários podem filtrar produtos por categoria
+- Os usuários podem visualizar detalhes individuais do produto
 
-## 6. Pesquisa e Filtros de Produtos
-- O sistema deve permitir que o cliente **pesquise produtos** por nome ou descrição.
-- O sistema deve permitir que o cliente **filtre produtos** por preço, categoria e faixa etária.
+Requisitos não funcionais:
 
-## 7. Avaliação e Comentários de Produtos
-- O sistema deve permitir que o cliente **avalie os produtos** com estrelas e comentários após a compra.
-- O sistema deve exibir as **avaliações de outros clientes** na página de detalhes do produto.
+1. Segurança:
+- As senhas são criptografadas usando BCrypt
+- O aplicativo usa Spring Security para autenticação e autorização
 
-## 8. Gerenciamento de Estoque (Admin)
-- O administrador deve poder visualizar o **estoque disponível** de cada produto.
-- O sistema deve **atualizar automaticamente o estoque** após a finalização de um pedido.
-- O sistema deve notificar o administrador quando um produto estiver com **estoque baixo**.
+2. Desempenho:
+- O aplicativo usa JPA e Hibernate para operações eficientes de banco de dados
 
-## 9. Ofertas e Descontos
-- O administrador deve poder **criar cupons de desconto** e promoções.
-- O sistema deve permitir que o cliente aplique **cupons de desconto** no checkout.
+3. Escalabilidade:
+- O aplicativo é construído usando Spring Boot, que suporta escalabilidade
 
-## 10. Funcionalidades Extras
-- O sistema deve permitir que o cliente adicione produtos à **lista de desejos**.
-- O sistema deve enviar **notificações de disponibilidade** para o cliente quando um produto fora de estoque voltar a estar disponível.
-- O sistema deve permitir que o cliente **compartilhe produtos** em redes sociais.
-- O sistema deve oferecer um **chat de suporte** para atendimento ao cliente.
+4. Usabilidade:
+- A interface do usuário é construída usando Bootstrap para um design responsivo
 
----
+5. Manutenibilidade:
+- O código segue uma estrutura MVC clara (Controladores, Serviços, Repositórios)
+- O aplicativo usa Thymeleaf para modelagem do lado do servidor, facilitando a manutenção de visualizações
 
-# Loja de Brinquedos - Requisitos Não Funcionais
+6. Compatibilidade:
+- O aplicativo suporta vários navegadores (implícito pelo uso de tecnologias da web padrão)
 
-## 1. Desempenho
-- O sistema deve **carregar a listagem de produtos** em até 2 segundos para até 1000 produtos.
-  
-## 2. Segurança
-- O sistema deve **criptografar senhas** de usuários no banco de dados.
-- O sistema deve implementar **proteção contra ataques de SQL Injection**.
+7. Internacionalização:
+- O aplicativo tem algum suporte para internacionalização (como evidenciado pelo uso dos atributos th:text do Thymeleaf)
 
-## 3. Usabilidade
-- O sistema deve ser **intuitivo e fácil de navegar** tanto para usuários quanto administradores.
-- O sistema deve ser **responsivo**, funcionando corretamente em dispositivos móveis.
+8. Persistência de dados:
+- O aplicativo usa MySQL para armazenamento de dados
+- Também há suporte para banco de dados H2, possivelmente para fins de desenvolvimento ou teste
 
-## 4. Escalabilidade
-- O sistema deve suportar **até 10.000 usuários simultâneos** sem perda de desempenho.
-
----
-
-# Lista de Requisitos Funcionais
-
-1. Cadastro e login de usuários.
-2. Gestão de produtos (CRUD).
-3. Carrinho de compras (adicionar, remover, atualizar produtos).
-4. Finalização de compra e métodos de pagamento.
-5. Histórico de pedidos e acompanhamento de status.
-6. Pesquisa e filtros de produtos.
-7. Avaliação e comentários dos produtos.
-8. Gerenciamento de estoque para administradores.
-9. Sistema de cupons de desconto e promoções.
-10. Funcionalidades extras (lista de desejos, notificações, compartilhamento em redes sociais, chat de suporte).
-
----
-
-Você pode usar essa lista para criar as issues no GitHub e acompanhar o progresso de cada funcionalidade. Quer ajustar algum requisito ou detalhar alguma parte?
+9. Integração externa:
+- O aplicativo se integra ao Google para OAuth2 autenticação
